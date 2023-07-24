@@ -2,7 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-// const userRoutes = require('./Routes/user.route')
+const userRoutes = require('./Routes/user.route')
 const cors = require('cors');
 
 // Connection à la base de données.
@@ -26,11 +26,12 @@ app.use(cors({
     optionsSuccessStatus: 200
 }));
 
-app.get('/', (req,res) => {
-    res.send('Hello World')
-});
+// Vérification de mon localHost en affichant le messahe Hello World
+// app.get('/', (req,res) => {
+//     res.send('Hello World')
+// });
 
-// app.use('/', userRoutes)
+app.use('/', userRoutes)
 
 // Configuration et lancement du serveur
 const start = async () => {
