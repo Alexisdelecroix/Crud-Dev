@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Indie Flower', cursive;
+}
+
+h1{
+    /* font-family: 'Indie Flower', cursive; */
+    text-align: center;
+    padding-top: 20px;
+    font-size: 75px;
+}
+
+h2{
+    font-weight: 100;
+    /* font-family: 'Indie Flower', cursive; */
+    text-align: center;
+    font-size: 30px;
+}
+
+#modal{
+    margin: 0;
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.466);
+}
+
+#modal section{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+
+#modal.active{
+    display: flex;
+}
+
+
+form{
+    width: 450px;
+    background-color: rgba(27, 44, 66, 1);
+    border-radius: 15px;
+    font-family: 'Indie Flower', cursive;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+    padding: 20px 0px;
+    height: 500px;
+}
+
+
+form p{
+    text-align: center;
+    color: white;
+    font-size: 22px;
+    margin-bottom: 0;
+}
+
+.input{
+    width: 90%;
+    text-align: center;
+}
+
+.input input{
+    font-family: 'Indie Flower', cursive;
+    background: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 60%;
+    color: white;
+}
+
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+#submit{
+    border: 2px solid rgba(3, 233, 244, 1);
+    padding: 10px;
+    background-color: transparent;
+    border-radius: 10px;
+    color: rgba(3, 233, 244, 1);
+    /* font-size: 18px; */
+    font-family: 'Indie Flower', cursive;
+}
+
+#button {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #001EBD;
+    color: white;
+    font-size: 20px;
+    margin-left: 35px;
+    cursor: pointer;
+}
+
+table{
+    background-color: rgba(27, 44, 66, 1);
+    width: 98%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+
+table tr th{
+    padding: 15px;
+    border-bottom: 2px solid rgba(221, 221, 85, 1);
+    border-right: 2px solid rgba(221, 221, 85, 1);
+    color: white;
+    font-size: 24px;
+}
+
+tbody tr td{
+    padding: 5px 10px;
+    border-bottom: 2px solid rgba(221, 221, 85, 1);
+    border-right: 2px solid rgba(221, 221, 85, 1);
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+table th:last-child{
+    border-right: 0;
+}
+
+
+
+
+
+

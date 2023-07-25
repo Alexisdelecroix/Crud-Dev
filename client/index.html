@@ -3,11 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CRUD</title>
+    <meta name="description" content="CRUD">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    
 </head>
 <body>
-    
 
-    <h1>Je suis sur le port 5500</h1>
+    <div id="modal">
+        <section id="closeModal">
+        <form action="" method="get">
+            <p>Ajouter un utilisateur</p>
+            <div class="input">
+                <label for="Nom"></label>
+                <input type="text" name="Nom" id="Name" placeholder="Nom :" >
+            </div>
+            <div class="input">
+                <label for="Prenom"></label>
+                <input type="text" name="Prenom" id="Prenom" placeholder="Prénom :" >
+            </div>
+            <div class="input">
+                <label for="Adresse"></label>
+                <input type="text" name="Adresse" id="Adresse" placeholder="Adresse :" >
+            </div>
+            <div class="input">
+                <label for="Ville"></label>
+                <input type="text" name="Ville" id="Ville" placeholder="Ville :" >
+            </div>
+            <div class="input">
+                <label for="Tel"></label>
+                <input type="number" name="Tel" id="tel" inputmode="numeric"  placeholder="Téléphone :" onwheel="return false;"  >
+            </div>
+            <div class="input">
+                <label for="Email"></label>
+                <input type="email" name="Email" id="Email" placeholder="Email :" >
+            </div>
+            <div class="input">
+                <label for="Postal"></label>
+                <input type="number" name="Postal" id="Postal" inputmode="numeric" placeholder="Code Postal :" onwheel="return false;" >
+            </div>
+            <div>
+                <input id="submit" type="submit" value="SUBMIT">
+            </div>
+        </form>
+    </section>
+    </div>
+
+    <h1>CRUD</h1>
+
+    <h2>Create, Read, Update, Delete !</h2>
+
+    <button id="button">Ajouter un utilisateur</button>
+
+    <table>
+        <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Adresse</th>
+          <th>Ville</th>
+          <th>Code Postal</th>
+          <th>Téléphone</th>
+          <th>Email</th>
+          <th>Modifier</th>
+          <th>Supprimer</th>
+        </tr>
+    </thead>
+    <tbody id="resultat">
+
+    </tbody>
+    </table>
+
+<script src="./js/app.js"></script>
 </body>
 </html>

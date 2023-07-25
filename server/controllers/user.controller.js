@@ -30,6 +30,18 @@ const createUser = (req, res) => {
     })
 }
 
+const getAllUsers = (req, res) => {
+   const query = 'SELECT * FROM users';
+   conn.query(query, (err, result)=> {
+    if (err) {
+        console.error("Erreur lors de la récupération des données :" + err);
+        res.status(500).json({error : "Erreur lors de la récupération des données"})
+    } else{
+        res.status(200).json(result)
+    }
+   })
+}
+
 const updateUser = (req, res) => {
     // Extraction de l'ID de l'utilisateur à partir des paramètres de la route
     const userId = req.params.id;
@@ -134,5 +146,5 @@ const deleteUser = (req, res) => {
 
 
 module.exports = { 
-    createUser, updateUser, deleteUser
+    createUser, getAllUsers, updateUser, deleteUser
 }
