@@ -1,7 +1,7 @@
 let modal = document.getElementById("modal")
 let button = document.getElementById("button")
 let closeModal = document.getElementById("closeModal")
-let formulaire = document.getElementById("formulaire")
+const formulaire = document.getElementById("formulaire")
 
 
 button.addEventListener("click", () => {
@@ -13,11 +13,27 @@ closeModal.addEventListener("click", () => {
 modal.classList.remove("active")
 })
 
-formulaire.addEventListener("submit", () => {
+formulaire.addEventListener("submit", myFunction)
 
-    
+function myFunction(event) {
+    event.preventDefault();
 
-})
+    // let formData = new formData(formulaire)
+
+    // console.log(formData.get(nom));
+    const nom = document.getElementById("nom").value;
+    const prenom = document.getElementById("prenom").value;
+    const adresse = document.getElementById("adresse").value;
+    const ville = document.getElementById("ville").value;
+    const postal = document.getElementById("postal").value;
+    const tel = document.getElementById("tel").value;
+    const email = document.getElementById("email").value;
+
+console.log(nom);
+console.log(prenom);
+
+modal.classList.remove("active")
+}
 
 async function httpGet(url) {
     const query = await fetch(url);
