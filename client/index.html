@@ -14,9 +14,14 @@
 <body>
 
     <div id="modal">
-        <section id="closeModal">
-        <form action="" method="get">
-            <p>Ajouter un utilisateur</p>
+        <section>
+        <form id="formulaire">
+
+            <div class="icone"><i id="closeModal" class="fa-solid fa-xmark"></i></div>
+                <p>Ajouter un utilisateur</p>
+               
+            
+            
             <div class="input">
                 <label for="Nom"></label>
                 <input type="text" name="Nom" id="Name" placeholder="Nom :" >
@@ -35,7 +40,7 @@
             </div>
             <div class="input">
                 <label for="Tel"></label>
-                <input type="number" name="Tel" id="tel" inputmode="numeric"  placeholder="Téléphone :" onwheel="return false;"  >
+                <input type="number" name="Tel" id="tel" inputmode="numeric"  placeholder="Téléphone :"  >
             </div>
             <div class="input">
                 <label for="Email"></label>
@@ -43,7 +48,7 @@
             </div>
             <div class="input">
                 <label for="Postal"></label>
-                <input type="number" name="Postal" id="Postal" inputmode="numeric" placeholder="Code Postal :" onwheel="return false;" >
+                <input type="number" name="Postal" id="Postal" inputmode="numeric" placeholder="Code Postal :" >
             </div>
             <div>
                 <input id="submit" type="submit" value="SUBMIT">
@@ -76,7 +81,7 @@
 
     </tbody>
     </table>
-
-<script src="./js/app.js"></script>
+            <script src="https://kit.fontawesome.com/dabffbf866.js" crossorigin="anonymous"></script>
+            <script src="./js/app.js"></script>
 </body>
 </html>

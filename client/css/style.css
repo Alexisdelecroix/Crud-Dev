@@ -51,7 +51,17 @@ form{
     row-gap: 20px;
     padding: 20px 0px;
     height: 500px;
+    padding-top: 0px;
 }
+
+.icone{
+    position: relative;
+left: 168px;
+top: 52px;
+font-size: 20px;
+color: white;
+}
+
 
 
 form p{
@@ -135,6 +145,26 @@ tbody tr td{
 
 table th:last-child{
     border-right: 0;
+}
+
+.btngreen{
+    padding: 5px 15px;
+    border-radius: 25px;
+    background-color: #40ff3d;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+}
+
+.btnred{
+    padding: 5px 15px;
+    border-radius: 25px;
+    background-color: #ff0000;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
 }
 
 

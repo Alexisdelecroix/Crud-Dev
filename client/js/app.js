@@ -1,6 +1,7 @@
 let modal = document.getElementById("modal")
 let button = document.getElementById("button")
 let closeModal = document.getElementById("closeModal")
+let formulaire = document.getElementById("formulaire")
 
 
 button.addEventListener("click", () => {
@@ -10,6 +11,12 @@ button.addEventListener("click", () => {
 
 closeModal.addEventListener("click", () => {
 modal.classList.remove("active")
+})
+
+formulaire.addEventListener("submit", () => {
+
+    
+
 })
 
 async function httpGet(url) {
