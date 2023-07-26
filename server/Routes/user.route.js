@@ -1,10 +1,11 @@
-const router = require('express').Router();
+const express = require('express');
+const router = express.Router();
 const userController = require('../controllers/user.controller');
 
 // register a new user
 router.post('/register', userController.createUser);
 
-// register a new user
+// Get All Users
 router.get('/all', userController.getAllUsers);
 
 // update a user

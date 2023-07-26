@@ -15,23 +15,66 @@ modal.classList.remove("active")
 
 formulaire.addEventListener("submit", myFunction)
 
-function myFunction(event) {
+async function myFunction(event) {
     event.preventDefault();
 
-    // let formData = new formData(formulaire)
-
-    // console.log(formData.get(nom));
+    // Récupération des données saisies par l'utilisateur
     const nom = document.getElementById("nom").value;
     const prenom = document.getElementById("prenom").value;
     const adresse = document.getElementById("adresse").value;
     const ville = document.getElementById("ville").value;
-    const postal = document.getElementById("postal").value;
-    const tel = document.getElementById("tel").value;
+    const code_postal = document.getElementById("code_postal").value;
+    const telephone = document.getElementById("telephone").value;
     const email = document.getElementById("email").value;
 
-console.log(nom);
-console.log(prenom);
 
+    // Création d'un objet contenant les données 
+    const userData = {
+        nom,
+        prenom,
+        adresse,
+        ville,
+        code_postal,
+        telephone,
+        email,
+    };
+
+    try {
+        // Requête POST au serveur local avec les données de l'utilisateur
+        const response = await fetch('http://localhost:8000/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            // Conversion de mon objet en chaine de caractère convertit en JSON
+            body: JSON.stringify(userData),
+        });
+
+        const data = await response.json();
+        console.log(data.message); // Affiche le message du serveur
+
+     
+         // Affiche le message de succès
+         const successMessage = document.getElementById("succes");
+         successMessage.style.display = "block";
+ 
+         // Masque le message de succès après 3 secondes
+         setTimeout(() => {
+             successMessage.style.display = "none";
+         }, 2000);
+
+           // Réinitialise le formulaire à zéro
+        formulaire.reset();
+
+        setTimeout(() => {
+             window.location.reload();
+        }, 3000);
+ 
+       
+    } catch (error) {
+        console.error('Erreur lors de l\'envoi de la requête', error);
+    }
+    
 modal.classList.remove("active")
 }
 

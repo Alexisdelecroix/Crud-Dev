@@ -19,6 +19,9 @@ const createUser = (req, res) => {
             error : 'Données incorrect'
         })
     }
+    
+    console.log('Données reçues du formulaire :', req.body);
+
     const query = 'INSERT INTO `users`(`nom`, `prenom`, `adresse`, `ville`, `code_postal`, `telephone`, `email`) VALUES (?, ?, ?, ?, ?, ?, ?)';
     conn.query(query, [nom, prenom, adresse, ville, code_postal, telephone, email], (err) => {
         if (err) {
@@ -49,7 +52,7 @@ const updateUser = (req, res) => {
    // Extraction des données du corps de la requête (nom, prénom, adresse, etc...)
     const { nom, prenom, adresse, ville, code_postal, telephone, email } = req.body;
 
-    // Vérifier si l'ID de l'utilisateur est présent dans les paramètres de la route
+    //  Vérifier si l'ID de l'utilisateur est présent dans les paramètres de la route
     if (!userId) {
         return res.status(400).json({
             error: 'ID de l\'utilisateur manquant dans les paramètres de la route',
@@ -71,36 +74,33 @@ const updateUser = (req, res) => {
 
     // Vérifier chaque propriété et ajouter à la requête SQL si elle est fournie
     if (nom) {
-        query += ' `nom` = ?,';
+        query += ' `nom` = ?';
         valuesToUpdate.push(nom);
     }
     if (prenom) {
-        query += ' `prenom` = ?,';
+        query += ' `prenom` = ?';
         valuesToUpdate.push(prenom);
     }
     if (adresse) {
-        query += ' `adresse` = ?,';
+        query += ' `adresse` = ?';
         valuesToUpdate.push(adresse);
     }
     if (ville) {
-        query += ' `ville` = ?,';
+        query += ' `ville` = ?';
         valuesToUpdate.push(ville);
     }
     if (code_postal) {
-        query += ' `code_postal` = ?,';
+        query += ' `code_postal` = ?';
         valuesToUpdate.push(code_postal);
     }
     if (telephone) {
-        query += ' `telephone` = ?,';
+        query += ' `telephone` = ?';
         valuesToUpdate.push(telephone);
     }
     if (email) {
-        query += ' `email` = ?,';
+        query += ' `email` = ?';
         valuesToUpdate.push(email);
     }
-
-    // Supprimer la virgule finale de la requête SQL
-    query = query.slice(0, -1);
 
     // Ajouter la condition pour filtrer par l'ID de l'utilisateur
     query += ' WHERE `id` = ?';

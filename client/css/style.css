@@ -19,6 +19,18 @@ h2{
     font-size: 30px;
 }
 
+#succes {
+    display: none;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #40ff3d;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    margin-left: 35px;
+    cursor: pointer;
+
+}
+
 #modal{
     margin: 0;
     display: none;
@@ -165,6 +177,11 @@ table th:last-child{
     font-size: 20px;
     cursor: pointer;
     border: none;
+}
+
+
+.Btn{
+    display: flex;
 }
 
 
