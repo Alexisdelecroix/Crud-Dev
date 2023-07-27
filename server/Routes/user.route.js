@@ -8,11 +8,14 @@ router.post('/register', userController.createUser);
 // Get All Users
 router.get('/all', userController.getAllUsers);
 
+// Get One Users
+router.get('/one/:id', userController.getOneUsers)
+
 // update a user
 router.put('/:id', userController.updateUser)
 
 // delete a user
-router.delete('/:id', userController.deleteUser)
+router.delete('/users/:id', userController.deleteUser)
 
 
 module.exports = router;

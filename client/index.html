@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,80 +10,139 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
-    
+
 </head>
+
 <body>
 
     <div id="modal">
         <section>
-        <form id="formulaire">
+            <form id="formulaire">
 
-            <div class="icone"><i id="closeModal" class="fa-solid fa-xmark"></i></div>
+                <div class="icone"><i id="closeModal" class="fa-solid fa-xmark"></i></div>
                 <p>Ajouter un utilisateur</p>
-               
-            
-            <div class="input">
-                <label for="Nom"></label>
-                <input type="text" name="Nom" id="nom" placeholder="Nom :" >
+
+
+                <div class="input">
+                    <label for="Nom"></label>
+                    <input type="text" name="Nom" id="nom" placeholder="Nom :">
+                </div>
+                <div class="input">
+                    <label for="Prenom"></label>
+                    <input type="text" name="Prenom" id="prenom" placeholder="Prénom :">
+                </div>
+                <div class="input">
+                    <label for="Adresse"></label>
+                    <input type="text" name="Adresse" id="adresse" placeholder="Adresse :">
+                </div>
+                <div class="input">
+                    <label for="Ville"></label>
+                    <input type="text" name="Ville" id="ville" placeholder="Ville :">
+                </div>
+                <div class="input">
+                    <label for="Tel"></label>
+                    <input type="number" name="Tel" id="telephone" inputmode="numeric" placeholder="Téléphone :">
+                </div>
+                <div class="input">
+                    <label for="Email"></label>
+                    <input type="email" name="Email" id="email" placeholder="Email :">
+                </div>
+                <div class="input">
+                    <label for="Postal"></label>
+                    <input type="number" name="Postal" id="code_postal" inputmode="numeric" placeholder="Code Postal :">
+                </div>
+                <div>
+                    <input id="submit" type="submit" value="SUBMIT">
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <div id="modalUpdate">
+        <section>
+            <form id="formulaireUpdate">
+
+                <div class="icone"><i id="closeModalUpdate" class="fa-solid fa-xmark"></i></div>
+                <p>Modifier un utilisateur</p>
+
+
+                <div class="input">
+                    <label for="Nom"></label>
+                    <input type="text" name="Nom" id="nom" placeholder="Nom :">
+                </div>
+                <div class="input">
+                    <label for="Prenom"></label>
+                    <input type="text" name="Prenom" id="prenom" placeholder="Prénom :">
+                </div>
+                <div class="input">
+                    <label for="Adresse"></label>
+                    <input type="text" name="Adresse" id="adresse" placeholder="Adresse :">
+                </div>
+                <div class="input">
+                    <label for="Ville"></label>
+                    <input type="text" name="Ville" id="ville" placeholder="Ville :">
+                </div>
+                <div class="input">
+                    <label for="Tel"></label>
+                    <input type="number" name="Tel" id="telephone" inputmode="numeric" placeholder="Téléphone :">
+                </div>
+                <div class="input">
+                    <label for="Email"></label>
+                    <input type="email" name="Email" id="email" placeholder="Email :">
+                </div>
+                <div class="input">
+                    <label for="Postal"></label>
+                    <input type="number" name="Postal" id="code_postal" inputmode="numeric" placeholder="Code Postal :">
+                </div>
+                <div>
+                    <input id="submit" type="submit" value="SUBMIT">
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <div id="modalDelete">
+        <section>
+            <div class="delete">
+                <p>Êtes vous sur de vouloir supprimer cette utilisateur ?</p>
+                <div class="positionBtnDelete">
+                    <button id="oui">Oui</button>
+                    <button id="non">Non</button>
+                </div>
             </div>
-            <div class="input">
-                <label for="Prenom"></label>
-                <input type="text" name="Prenom" id="prenom" placeholder="Prénom :" >
-            </div>
-            <div class="input">
-                <label for="Adresse"></label>
-                <input type="text" name="Adresse" id="adresse" placeholder="Adresse :" >
-            </div>
-            <div class="input">
-                <label for="Ville"></label>
-                <input type="text" name="Ville" id="ville" placeholder="Ville :" >
-            </div>
-            <div class="input">
-                <label for="Tel"></label>
-                <input type="number" name="Tel" id="telephone" inputmode="numeric"  placeholder="Téléphone :"  >
-            </div>
-            <div class="input">
-                <label for="Email"></label>
-                <input type="email" name="Email" id="email" placeholder="Email :" >
-            </div>
-            <div class="input">
-                <label for="Postal"></label>
-                <input type="number" name="Postal" id="code_postal" inputmode="numeric" placeholder="Code Postal :" >
-            </div>
-            <div>
-                <input id="submit" type="submit" value="SUBMIT">
-            </div>
-        </form>
-    </section>
+        </section>
     </div>
 
     <h1>CRUD</h1>
 
     <h2>Create, Read, Update, Delete !</h2>
 
-    <div class="Btn"><button id="button">Ajouter un utilisateur</button> 
-    <button id="succes">Utilisateur enregistrer avec succes</button></div>
-    
+    <div class="Btn"><button id="button">Ajouter un utilisateur</button>
+        <button id="succes" class="succes">Utilisateur enregistrer avec succès</button>
+        <button id="succesDelete" class="succes">Utilisateur supprimer avec succès</button>
+    </div>
+
 
     <table>
         <thead>
-        <tr>
-          <th>Nom</th>
-          <th>Prénom</th>
-          <th>Adresse</th>
-          <th>Ville</th>
-          <th>Code Postal</th>
-          <th>Téléphone</th>
-          <th>Email</th>
-          <th>Modifier</th>
-          <th>Supprimer</th>
-        </tr>
-    </thead>
-    <tbody id="resultat">
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>Code Postal</th>
+                <th>Téléphone</th>
+                <th>Email</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody id="resultat">
 
-    </tbody>
+        </tbody>
     </table>
-            <script src="https://kit.fontawesome.com/dabffbf866.js" crossorigin="anonymous"></script>
-            <script src="./js/app.js"></script>
+    <script src="https://kit.fontawesome.com/dabffbf866.js" crossorigin="anonymous"></script>
+    <script src="./js/app.js"></script>
 </body>
+
 </html>
