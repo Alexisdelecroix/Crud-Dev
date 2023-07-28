@@ -26,6 +26,8 @@ h2 {
   font-size: 20px;
   margin-left: 35px;
   cursor: pointer;
+  border: none;
+
 }
 
 #modalUpdate {
@@ -203,6 +205,7 @@ input[type="number"] {
   font-size: 20px;
   margin-left: 35px;
   cursor: pointer;
+  border: none;
 }
 
 table {

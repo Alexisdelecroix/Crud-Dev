@@ -74,10 +74,10 @@ const getOneUsers = (req, res) => {
         } else {
             res.status(200).json({ message: 'Utilisateur modifié' });
         }
-
-
     });
 };
+
+
 // const updateUser = (req, res) => {
 //     // Extraction de l'ID de l'utilisateur à partir des paramètres de la route
 //     const userId = req.params.id;

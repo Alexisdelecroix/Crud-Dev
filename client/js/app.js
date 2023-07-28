@@ -1,23 +1,27 @@
 let modal = document.getElementById("modal");
 let modalUpdate = document.getElementById("modalUpdate");
-
 let button = document.getElementById("button");
 let closeModal = document.getElementById("closeModal");
 let closeModalUpdate = document.getElementById("closeModalUpdate");
 const formulaire = document.getElementById("formulaire");
 
+
+// Ouverture de la modal
 button.addEventListener("click", () => {
   modal.classList.add("active");
-  console.log("coucou");
 });
 
+// Fermeture de la modal
 closeModal.addEventListener("click", () => {
   modal.classList.remove("active");
 });
 
+// Fermeture de la modal Update
 closeModalUpdate.addEventListener("click", () => {
   modalUpdate.classList.remove("active");
 });
+
+
 
 formulaire.addEventListener("submit", myFunction);
 
@@ -55,14 +59,11 @@ async function myFunction(event) {
       body: JSON.stringify(userData),
     });
 
-    const data = await response.json();
-    console.log(data.message); // Affiche le message du serveur
-
     // Affiche le message de succès
     const successMessage = document.getElementById("succes");
-    successMessage.style.display = "block";
+    successMessage.style.display = "flex";
 
-    // Masque le message de succès après 3 secondes
+    // Masque le message de succès après 2 secondes
     setTimeout(() => {
       successMessage.style.display = "none";
     }, 2000);
@@ -70,6 +71,7 @@ async function myFunction(event) {
     // Réinitialise le formulaire à zéro
     formulaire.reset();
 
+    // Refresh la page après 2.5 secondes
     setTimeout(() => {
       window.location.reload();
     }, 2500);
@@ -77,8 +79,10 @@ async function myFunction(event) {
     console.error("Erreur lors de l'envoi de la requête", error);
   }
 
+  // Fermeture de la modale
   modal.classList.remove("active");
 }
+
 
 async function httpGet(url) {
   const query = await fetch(url);
@@ -87,7 +91,9 @@ async function httpGet(url) {
   return response;
 }
 
+
 function getAllUsers() {
+
   let resultat = document.getElementById("resultat");
   const response = httpGet("http://localhost:8000/all");
 
@@ -107,7 +113,11 @@ function getAllUsers() {
                                 </tr>`;
     });
 
+    // Récupération des buttons contenant la classe btnred
     let openModalDelete = document.querySelectorAll(".btnred");
+
+    let modalDelete = document.getElementById("modalDelete");
+
 
     openModalDelete.forEach((element) => {
       element.addEventListener("click", () => {
@@ -124,17 +134,20 @@ function getAllUsers() {
       });
     });
 
-    let modalDelete = document.getElementById("modalDelete");
 
     let closeModalDelete = document.getElementById("non");
 
+    // Suppression de la modal si on click sur NON
     closeModalDelete.addEventListener("click", () => {
       modalDelete.classList.remove("active");
     });
 
     let deleteUser = document.getElementById("oui");
 
+    // Event quand on click sur OUI 
     deleteUser.addEventListener("click", () => {
+
+      // Récupération de l'id stocker dans l'élement modalDelete
       const userId = modalDelete.dataset.userId;
 
       try {
@@ -146,6 +159,7 @@ function getAllUsers() {
           },
         });
 
+        // Fermeture de la modal Delete
         modalDelete.classList.remove("active");
 
         // Affiche le message de succès
@@ -160,6 +174,8 @@ function getAllUsers() {
         // Réinitialise le formulaire à zéro
         formulaire.reset();
 
+
+        // Refresh après 2.5 secondes
         setTimeout(() => {
           window.location.reload();
         }, 2500);
@@ -168,6 +184,7 @@ function getAllUsers() {
       }
     });
 
+     // Récupération des buttons contenant la classe btngreen
     let openUpdateModal = document.querySelectorAll(".btngreen");
 
     openUpdateModal.forEach((element) => {
@@ -177,7 +194,7 @@ function getAllUsers() {
 
         console.log(userId);
 
-        // Stocker l'ID de l'utilisateur dans l'élément modalDelete
+        // Stocker l'ID de l'utilisateur dans l'élément modalUpdate
         modalUpdate.dataset.userId = userId;
 
         // Ouverture de la modal "voulez vous supprimez un utilisateur"
@@ -194,6 +211,7 @@ function getAllUsers() {
             .then((res) => res.json())
             .then((data) => {
               console.log(data);
+              // Insertion des données dans le formulaire Update
               const formulaireUpdate = document.getElementById("formulaireUpdate");
               formulaireUpdate.reset();
               formulaireUpdate.nom.value = data[0].nom
@@ -203,8 +221,6 @@ function getAllUsers() {
               formulaireUpdate.telephone.value = data[0].telephone
               formulaireUpdate.email.value = data[0].email
               formulaireUpdate.code_postal.value = data[0].code_postal
-
-
             })
             .catch((error) => {
               console.error("Erreur lors de l'obtention des données:", error);
@@ -212,8 +228,10 @@ function getAllUsers() {
         } catch (error) {
           console.error("Erreur lors de l'envoi de la requête", error);
         }
-        formulaireUpdate.addEventListener("submit", () => {
 
+        formulaireUpdate.addEventListener("submit", (event) => {
+          event.preventDefault();
+          // Création de l'objet userData qui contient les données modifier
           const userData = {
             nom: formulaireUpdate.nom.value,
             prenom: formulaireUpdate.prenom.value,
@@ -232,10 +250,33 @@ function getAllUsers() {
               },
               body: JSON.stringify(userData),
             });
+
+
+            modalUpdate.classList.remove("active")
+
+
+            const updateMessage = document.getElementById("succesUpdate");
+            updateMessage.style.display = "block";
+
+
+        setTimeout(() => {
+          updateMessage.style.display = "none";
+        }, 2000);
+
+        // Réinitialise le formulaire à zéro
+        // formulaire.reset();
+
+
+        // Refresh après 2.5 secondes
+        setTimeout(() => {
+          window.location.reload();
+        }, 2500);
             console.log(userData);
-          } catch (error) {
+          } 
+          catch (error) {
             console.error("Erreur lors de l'envoi de la requête", error);
           }
+
         });
       });
     });
