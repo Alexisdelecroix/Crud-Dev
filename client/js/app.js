@@ -37,6 +37,50 @@ async function myFunction(event) {
   const telephone = document.getElementById("telephone").value;
   const email = document.getElementById("email").value;
 
+  let errorNom = document.getElementById("errorNom");
+  let errorPrenom = document.getElementById("errorPrenom");
+  let errorAdresse = document.getElementById("errorAdresse");
+
+
+  let myRegexString = /^[a-zA-Z-\s]+$/;
+  let myRegexAdresse = /^[a-zA-Z0-9\s,'-]+$/;
+
+  let isFormValid = true;
+
+  if (myRegexString.test(nom) == false || nom.trim() === "") {
+    errorNom.innerHTML = "Le nom doit comporter uniquement des lettres";
+    errorNom.style.color = "red";
+    errorNom.style.fontSize = "13px";
+    isFormValid = false;
+  } else {
+    errorNom.innerHTML = "";
+  }
+
+  if (myRegexString.test(prenom) == false || prenom.trim() === "") {
+    errorPrenom.innerHTML = "Le prénom doit comporter uniquement des lettres";
+    errorPrenom.style.color = "red";
+    errorPrenom.style.fontSize = "13px";
+    isFormValid = false;
+  } else {
+    errorPrenom.innerHTML = "";
+  }
+
+  if (myRegexAdresse.test(adresse) == false || adresse.trim() === "") {
+    errorAdresse.innerHTML = "L'adresse doit comporter uniquement des lettres et chiffres ";
+    errorAdresse.style.color = "red";
+    errorAdresse.style.fontSize = "13px";
+    isFormValid = false;
+  } else {
+    errorAdresse.innerHTML = "";
+  }
+
+
+  // Empêche la soumission du formulaire si des champs
+  // sont invalides on sort de la function myFunction
+  if (!isFormValid) {
+    return; 
+  }
+
   // Création d'un objet contenant les données
   const userData = {
     nom,
@@ -63,18 +107,16 @@ async function myFunction(event) {
     const successMessage = document.getElementById("succes");
     successMessage.style.display = "flex";
 
-    // Masque le message de succès après 2 secondes
+    // Masque le message de succès après 1.5 secondes
     setTimeout(() => {
       successMessage.style.display = "none";
-    }, 2000);
+      // Réinitialise le formulaire à zéro
+      formulaire.reset();
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
+    }, 1500);
 
-    // Réinitialise le formulaire à zéro
-    formulaire.reset();
-
-    // Refresh la page après 2.5 secondes
-    setTimeout(() => {
-      window.location.reload();
-    }, 2500);
   } catch (error) {
     console.error("Erreur lors de l'envoi de la requête", error);
   }
@@ -82,6 +124,7 @@ async function myFunction(event) {
   // Fermeture de la modale
   modal.classList.remove("active");
 }
+
 
 
 async function httpGet(url) {
@@ -166,25 +209,22 @@ function getAllUsers() {
         const deleteMessage = document.getElementById("succesDelete");
         deleteMessage.style.display = "block";
 
-        // Masque le message de succès après 3 secondes
+        // Masque le message de succès après 1.5 secondes
         setTimeout(() => {
           deleteMessage.style.display = "none";
-        }, 2000);
+          // Réinitialise le formulaire à zéro
+          formulaire.reset();
+          setTimeout(() => {
+            window.location.reload();
+          }, 500);
+        }, 1500);
 
-        // Réinitialise le formulaire à zéro
-        formulaire.reset();
-
-
-        // Refresh après 2.5 secondes
-        setTimeout(() => {
-          window.location.reload();
-        }, 2500);
       } catch (error) {
         console.error("Erreur lors de l'envoi de la requête", error);
       }
     });
 
-     // Récupération des buttons contenant la classe btngreen
+    // Récupération des buttons contenant la classe btngreen
     let openUpdateModal = document.querySelectorAll(".btngreen");
 
     openUpdateModal.forEach((element) => {
@@ -259,20 +299,20 @@ function getAllUsers() {
             updateMessage.style.display = "block";
 
 
-        setTimeout(() => {
-          updateMessage.style.display = "none";
-        }, 2000);
+            setTimeout(() => {
+              updateMessage.style.display = "none";
+            }, 2000);
 
-        // Réinitialise le formulaire à zéro
-        // formulaire.reset();
+            // Réinitialise le formulaire à zéro
+            // formulaire.reset();
 
 
-        // Refresh après 2.5 secondes
-        setTimeout(() => {
-          window.location.reload();
-        }, 2500);
+            // Refresh après 2.5 secondes
+            setTimeout(() => {
+              window.location.reload();
+            }, 2500);
             console.log(userData);
-          } 
+          }
           catch (error) {
             console.error("Erreur lors de l'envoi de la requête", error);
           }
