@@ -5,7 +5,6 @@ let closeModal = document.getElementById("closeModal");
 let closeModalUpdate = document.getElementById("closeModalUpdate");
 const formulaire = document.getElementById("formulaire");
 
-
 // Ouverture de la modal
 button.addEventListener("click", () => {
   modal.classList.add("active");
@@ -16,13 +15,7 @@ closeModal.addEventListener("click", () => {
   modal.classList.remove("active");
 });
 
-// Fermeture de la modal Update
-closeModalUpdate.addEventListener("click", () => {
-  modalUpdate.classList.remove("active");
-});
-
-
-
+// Function ajout d'un utilisateur
 formulaire.addEventListener("submit", myFunction);
 
 async function myFunction(event) {
@@ -37,13 +30,20 @@ async function myFunction(event) {
   const telephone = document.getElementById("telephone").value;
   const email = document.getElementById("email").value;
 
+  // Error regex
   let errorNom = document.getElementById("errorNom");
   let errorPrenom = document.getElementById("errorPrenom");
   let errorAdresse = document.getElementById("errorAdresse");
-
+  let errorVille = document.getElementById("errorVille");
+  let errorCode_Postal = document.getElementById("errorPostal");
+  let errorTel = document.getElementById("errorTel");
+  let errorMail = document.getElementById("errorMail");
 
   let myRegexString = /^[a-zA-Z-\s]+$/;
   let myRegexAdresse = /^[a-zA-Z0-9\s,'-]+$/;
+  let myRegexPostal = /^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}$/;
+  let myRegexTel = /^[0-9]{10}$/;
+  let myRegexMail = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
 
   let isFormValid = true;
 
@@ -74,11 +74,46 @@ async function myFunction(event) {
     errorAdresse.innerHTML = "";
   }
 
+  if (myRegexString.test(ville) == false || ville.trim() === "") {
+    errorVille.innerHTML = "La ville doit comporter uniquement des lettres";
+    errorVille.style.color = "red";
+    errorVille.style.fontSize = "13px";
+    isFormValid = false;
+  } else {
+    errorVille.innerHTML = "";
+  }
+
+  if (myRegexPostal.test(code_postal) == false || code_postal.trim() === "") {
+    errorCode_Postal.innerHTML = "Le code postal doit contenir 5 chiffres";
+    errorCode_Postal.style.color = "red";
+    errorCode_Postal.style.fontSize = "13px";
+    isFormValid = false;
+  } else {
+    errorCode_Postal.innerHTML = "";
+  }
+
+  if (myRegexMail.test(email) == false || email.trim() === "") {
+    errorMail.innerHTML = "Le mail doit être valide";
+    errorMail.style.color = "red";
+    errorMail.style.fontSize = "13px";
+    isFormValid = false;
+  } else {
+    errorMail.innerHTML = "";
+  }
+
+  if (myRegexTel.test(telephone) == false || telephone.trim() === "") {
+    errorTel.innerHTML = "Le numéro de téléphone doit contenir 10 chiffres";
+    errorTel.style.color = "red";
+    errorTel.style.fontSize = "13px";
+    isFormValid = false;
+  } else {
+    errorTel.innerHTML = "";
+  }
 
   // Empêche la soumission du formulaire si des champs
   // sont invalides on sort de la function myFunction
   if (!isFormValid) {
-    return; 
+    return;
   }
 
   // Création d'un objet contenant les données
@@ -116,16 +151,13 @@ async function myFunction(event) {
         window.location.reload();
       }, 500);
     }, 1500);
-
   } catch (error) {
     console.error("Erreur lors de l'envoi de la requête", error);
   }
-
   // Fermeture de la modale
   modal.classList.remove("active");
 }
-
-
+// Fin de la function ajout d'un utilisateur
 
 async function httpGet(url) {
   const query = await fetch(url);
@@ -134,7 +166,7 @@ async function httpGet(url) {
   return response;
 }
 
-
+// Function afficher les utilisateurs
 function getAllUsers() {
 
   let resultat = document.getElementById("resultat");
@@ -176,7 +208,6 @@ function getAllUsers() {
         modalDelete.classList.add("active");
       });
     });
-
 
     let closeModalDelete = document.getElementById("non");
 
@@ -224,6 +255,11 @@ function getAllUsers() {
       }
     });
 
+    // Fermeture de la modal Update
+    closeModalUpdate.addEventListener("click", () => {
+      modalUpdate.classList.remove("active");
+    });
+
     // Récupération des buttons contenant la classe btngreen
     let openUpdateModal = document.querySelectorAll(".btngreen");
 
@@ -237,7 +273,7 @@ function getAllUsers() {
         // Stocker l'ID de l'utilisateur dans l'élément modalUpdate
         modalUpdate.dataset.userId = userId;
 
-        // Ouverture de la modal "voulez vous supprimez un utilisateur"
+
         modalUpdate.classList.add("active");
 
         try {
@@ -291,36 +327,26 @@ function getAllUsers() {
               body: JSON.stringify(userData),
             });
 
-
             modalUpdate.classList.remove("active")
-
 
             const updateMessage = document.getElementById("succesUpdate");
             updateMessage.style.display = "block";
 
-
             setTimeout(() => {
               updateMessage.style.display = "none";
-            }, 2000);
+            }, 1000);
 
-            // Réinitialise le formulaire à zéro
-            // formulaire.reset();
-
-
-            // Refresh après 2.5 secondes
             setTimeout(() => {
               window.location.reload();
-            }, 2500);
+            }, 1500);
             console.log(userData);
           }
           catch (error) {
             console.error("Erreur lors de l'envoi de la requête", error);
           }
-
         });
       });
     });
   });
 };
-
 getAllUsers();

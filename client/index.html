@@ -41,18 +41,22 @@
                 <div class="input">
                     <label for="ville"></label>
                     <input type="text" name="ville" id="ville" placeholder="Ville :">
+                    <span id="errorVille" class="error"></span>
                 </div>
                 <div class="input">
                     <label for="tel"></label>
-                    <input type="number" name="tel" id="telephone" inputmode="numeric" placeholder="Téléphone :">
+                    <input type="number" name="tel" id="telephone" placeholder="Téléphone :">
+                    <span id="errorTel" class="error"></span>
                 </div>
                 <div class="input">
                     <label for="email"></label>
                     <input type="email" name="email" id="email" placeholder="Email :">
+                    <span id="errorMail" class="error"></span>
                 </div>
                 <div class="input">
                     <label for="postal"></label>
-                    <input type="number" name="postal" id="code_postal" pattern="[0-9]+" title="les lettres ne sont pas autorisés" inputmode="numeric" placeholder="Code Postal :">
+                    <input type="number" name="postal" id="code_postal" placeholder="Code Postal :">
+                    <span id="errorPostal" class="error"></span>
                 </div>
                 <div>
                     <input id="submit" type="submit" value="SUBMIT">
